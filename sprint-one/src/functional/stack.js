@@ -15,14 +15,15 @@ var Stack = function() {
    //if obj is not empty
      //iterate over the obj
      for (var key in storage) {
-       if (parseInt(key) > greatest) {
-         greatest = parseInt(key);
+       if (parseInt(key) >= greatest) {
+        greatest = parseInt(key);
        }
       }
       storage[greatest + 1] = value;
     } else {
-      storage[greatest] = value;
+      storage[0] = value;
    }
+   console.log(storage);
   };
 
   someInstance.pop = function() {

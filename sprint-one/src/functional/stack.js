@@ -23,7 +23,7 @@ var Stack = function() {
     } else {
       storage[0] = value;
    }
-   console.log(storage);
+
   };
 
   someInstance.pop = function() {

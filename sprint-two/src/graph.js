@@ -2,6 +2,11 @@
 
 // Instantiate a new graph
 var Graph = function() {
+  // create a graph object - node
+  var node = {};
+  node.value  =
+  node.edge = null;
+  // create value-key
 };
 
 // Add a node to the graph, passing in the node's value.

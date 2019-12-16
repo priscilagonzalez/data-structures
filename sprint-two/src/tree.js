@@ -25,15 +25,14 @@ treeMethods.contains = function (target) {
   //if target === value
   if (target === this.value) {
     //return true;
-    console.log("COMON!")
     return true;
   }
-
-
   //iterate over the children
   for (var i = 0; i < this.children.length; i++) {
     // call contain on each value of the loop
-    this.children[i].contains(target);
+    if (this.children[i].contains(target)) {
+      return true;
+    }
   }
 
   return false;

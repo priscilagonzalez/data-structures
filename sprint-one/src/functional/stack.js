@@ -1,6 +1,36 @@
 var Stack = function() {
   var someInstance = {};
 
+  var storage = {};
+
+  var size = 0;
+
+  someInstance.push = function(value) {
+
+    storage[size++] = value;
+  };
+
+  someInstance.pop = function() {
+
+    size && size--;
+    var result = storage[size];
+
+    delete storage[size];
+
+    return result;
+  };
+
+  someInstance.size = function() {
+
+    return size;
+  };
+
+  return someInstance;
+};
+
+/*var Stack = function() {
+  var someInstance = {};
+
   // Use an object with numeric keys to store values
   var storage = {};
 
@@ -8,12 +38,7 @@ var Stack = function() {
   someInstance.push = function(value) {
 
     var greatest = Object.keys(storage)[0];
-    // define greatest variable
-    //var greatest = 0;
-   // if obj is empty
    if (Object.keys(storage).length > 0) {
-   //if obj is not empty
-     //iterate over the obj
      for (var key in storage) {
        if (parseInt(key) >= greatest) {
         greatest = parseInt(key);
@@ -44,5 +69,5 @@ var Stack = function() {
   };
 
   return someInstance;
-};
+};*/
 

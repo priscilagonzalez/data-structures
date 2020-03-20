@@ -1,44 +1,46 @@
-var Tree = function (value) {
+var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
-  newTree.children = [];  // fix me
 
+  newTree.children = [];
   _.extend(newTree, treeMethods);
+
   return newTree;
 };
 
 var treeMethods = {};
 
-treeMethods.addChild = function (value) { // 15
-  //define a new tree
-  var child = Tree(value); // {value: 15, children: []}
-  //set the value as input value
-  //push tree into children array
+treeMethods.addChild = function(value) {
+
+  var child = Tree(value);
   this.children.push(child);
+  };
 
+treeMethods.contains = function(target) {
 
-};
-//whatever.contains(6)
-treeMethods.contains = function (target) {
-  //if target === value
-  if (target === this.value) {
-    //return true;
+  if ( this.value === target ) {
     return true;
   }
-  //iterate over the children
-  for (var i = 0; i < this.children.length; i++) {
-    // call contain on each value of the loop
-    if (this.children[i].contains(target)) {
+  for ( var i = 0; i < this.children.length; i++ ) {
+    var child = this.children[i];
+    if (child.contains(target)) {
       return true;
     }
   }
-
   return false;
+  };
 
+
+treeMethods.traverse = function(callback) {
+  callback(this.value);
+
+  if (!this.children) { return; }
+  for (var i = 0; i < this.children.length; i++) {
+    var child = this.children[i];
+    child.traverse(callback);
+  }
 };
-
 
 
 /*

@@ -1,43 +1,45 @@
 var Queue = function() {
   var someInstance = {};
 
-  // Use an object with numeric keys to store values
-  var storage = {
+  var storage = {};
 
-    // smallest = 0
-    // storage[smallest + 1]
-    // "1": a;lkdfj;aldkfa
-    // "2": al;jfaldk;sj
-
-
-    // duck
-
-    // "3": a;lksdjfa;lsdkjf smallest (beginning)
-    // "4": "whatever"
-    // "5": heladlkjfa;
-    // "6": a;dlsfjkal;kdfja
-
-
-    // 0: "hello"
-
-
-    // first smallest integer
-    // last - largest interger
-  };
-
-  // Implement the methods below
+  var start = 0;
+  var end = 0;
 
   someInstance.enqueue = function(value) {
-    //FIFO First in, first out
 
-    // define smallest variable
+    storage[end++] = value;
+      };
+
+  someInstance.dequeue = function() {
+
+    // This does some unnecessary work sometimes.
+    var result = storage[start];
+    delete storage[start];
+
+    someInstance.size() && start++;
+
+    return result;
+  };
+
+  someInstance.size = function() {
+
+    return end - start;
+  };
+
+  return someInstance;
+};
+
+/*var Queue = function() {
+  var someInstance = {};
+
+  var storage = {
+
+  };
+
+  someInstance.enqueue = function(value) {
     var greatest = Object.keys(storage)[0];
-    // define greatest variable
-    //var greatest = 0;
-   // if obj is empty
    if (Object.keys(storage).length > 0) {
-   //if obj is not empty
-     //iterate over the obj
      for (var key in storage) {
        if (parseInt(key) > greatest) {
          greatest = parseInt(key);
@@ -51,18 +53,6 @@ var Queue = function() {
   };
 
   someInstance.dequeue = function() {
-    // var keys = Object.keys(storage);
-    // var min = keys[0];
-    // for (var i = 0; i < keys.length; i++) {
-    //   if (keys[i] < min) {
-    //     min = keys[i];
-
-    //  }
-    // }
-    // var result = storage[min];
-    // delete storage[min];
-    // return result;
-//////////////////////////////////////////////////////
     var smallest = Object.keys(storage)[0];
 
     for (var key in storage) {
@@ -80,4 +70,4 @@ var Queue = function() {
   };
 
   return someInstance;
-};
+};*/
